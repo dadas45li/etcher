@@ -25,7 +25,7 @@ function usage() {
   echo "Options"
   echo ""
   echo "    -r <architecture>"
-  echo "    -t <type (debian|node)>"
+  echo "    -t <type (debian|node|docker)>"
   exit 1
 }
 
@@ -51,7 +51,7 @@ if [ "$ARGV_TYPE" == "node" ]; then
     RESULT=ia32
   elif [ "$ARGV_ARCHITECTURE" == "x64" ]; then
     RESULT=x64
-  elif [ "$ARGV_ARCHITECTURE" == "armv7l" ]; then
+  elif [ "$ARGV_ARCHITECTURE" == "armv7hf" ]; then
     RESULT=arm
   fi
 elif [ "$ARGV_TYPE" == "debian" ]; then
@@ -59,8 +59,16 @@ elif [ "$ARGV_TYPE" == "debian" ]; then
     RESULT=i386
   elif [ "$ARGV_ARCHITECTURE" == "x64" ]; then
     RESULT=amd64
-  elif [ "$ARGV_ARCHITECTURE" == "armv7l" ]; then
+  elif [ "$ARGV_ARCHITECTURE" == "armv7hf" ]; then
     RESULT=armhf
+  fi
+elif [ "$ARGV_TYPE" == "docker" ]; then
+  if [ "$ARGV_ARCHITECTURE" == "x64" ]; then
+    RESULT=x86_64
+  elif [ "$ARGV_ARCHITECTURE" == "x86" ]; then
+    RESULT=i686
+  elif [ "$ARGV_ARCHITECTURE" == "armv7hf" ]; then
+    RESULT=armv7hf
   fi
 else
   echo "Unsupported architecture type: $ARGV_TYPE" 1>&2

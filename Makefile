@@ -73,7 +73,7 @@ else
 			HOST_ARCH = x86
 		endif
 		ifeq ($(shell uname -m),armv7l)
-			HOST_ARCH = armv7l
+			HOST_ARCH = armv7hf
 		endif
 	endif
 	ifeq ($(shell uname -s),Darwin)

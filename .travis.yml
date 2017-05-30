@@ -22,12 +22,15 @@ env:
   matrix:
     - TARGET_ARCH=x64
     - TARGET_ARCH=x86
+    - TARGET_ARCH=armv7hf
 
 matrix:
   fast_finish: true
   exclude:
     - os: osx
       env: TARGET_ARCH=x86
+    - os: osx
+      env: TARGET_ARCH=armv7hf
 
 os:
   - linux
